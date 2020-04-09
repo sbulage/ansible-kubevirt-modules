@@ -14,6 +14,8 @@
     - name: Create a Cirros VM from a DataVolume
       kubevirt_vm:
         state: running
+        wait: true
+        wait_timeout: 200
         name: cirros-dv
         labels:
           special: test-e2e-key
