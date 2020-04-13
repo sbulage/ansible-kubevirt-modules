@@ -12,7 +12,7 @@
       kubevirt_pvc:
         namespace: default
         name: pvc1
-        storage_class_name: {{ storage_provisioner }}
+        storage_class_name: "{{ storage_provisioner }}"
         access_modes:
         - ReadWriteOnce
         size: 100Mi
@@ -21,7 +21,7 @@
       kubevirt_pvc:
         namespace: default
         name: pvc-blank
-        storage_class_name: {{ storage_provisioner }}
+        storage_class_name: "{{ storage_provisioner }}"
         access_modes:
         - ReadWriteOnce
         size: 100Mi
@@ -33,7 +33,7 @@
       kubevirt_pvc:
         namespace: default
         name: pvc-demo
-        storage_class_name: {{ storage_provisioner }}
+        storage_class_name: "{{ storage_provisioner }}"
         access_modes:
         - ReadWriteOnce
         size: 100Mi
