@@ -16,6 +16,8 @@
         access_modes:
         - ReadWriteOnce
         size: 100Mi
+        wait: yes
+        wait_timeout: 600
 
     - name: Create a blank PVC image
       kubevirt_pvc:
@@ -28,6 +30,7 @@
         cdi_source:
           blank: yes
         wait: yes
+        wait_timeout: 600
 
     - name: Create a PVC and fetch contents from an external http location
       kubevirt_pvc:
@@ -41,6 +44,7 @@
           http:
             url: "https://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img"
         wait: yes
+        wait_timeout: 600
 
     # Missing test: clone the last PVC
     # This used to be possible with CDI, but with 1.9.4 cloning got limited to datavols
