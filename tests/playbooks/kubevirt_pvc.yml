@@ -13,6 +13,7 @@
         namespace: default
         name: pvc1
         storage_class_name: "{{ storage_provisioner }}"
+        volume_mode: "{{ volume_mode }}"
         annotations:
           "kubevirt.io/provisionOnNode" : "{{ node_name }}"
         access_modes:
