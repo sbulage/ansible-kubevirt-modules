@@ -17,6 +17,7 @@
              app: containerized-data-importer
            annotations:
              cdi.kubevirt.io/storage.import.endpoint: "https://dl.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.qcow2"
+             kubevirt.io/provisionOnNode : "{{ node_name }}"
          spec:
            storageClassName: "{{ storage_provisioner }}"
            accessModes:
