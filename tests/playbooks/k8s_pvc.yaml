@@ -20,6 +20,7 @@
              kubevirt.io/provisionOnNode : "{{ node_name }}"
          spec:
            storageClassName: "{{ storage_provisioner }}"
+           volumeMode: "{{ volume_mode }}"
            accessModes:
            - ReadWriteOnce
            resources:
