@@ -16,13 +16,14 @@
            labels:
              app: containerized-data-importer
            annotations:
-             cdi.kubevirt.io/storage.import.endpoint: "https://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img"
+             cdi.kubevirt.io/storage.import.endpoint: "https://dl.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.qcow2"
          spec:
+           storageClassName: "{{ storage_provisioner }}"
            accessModes:
            - ReadWriteOnce
            resources:
              requests:
-               storage: 20Mi
+               storage: 5Gi
 
     - name: Wait for PVC to be ready
       k8s_facts:
@@ -33,4 +34,4 @@
       register: pvc
       until: "pvc.resources[0].status.phase == 'Bound' and pvc.resources[0].metadata.annotations['cdi.kubevirt.io/storage.pod.phase'] == 'Succeeded'"
       delay: 10
-      retries: 18
+      retries: 10
