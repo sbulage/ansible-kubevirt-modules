@@ -37,3 +37,14 @@
       until: "pvc.resources[0].status.phase == 'Bound' and pvc.resources[0].metadata.annotations['cdi.kubevirt.io/storage.pod.phase'] == 'Succeeded'"
       delay: 10
       retries: 10
+
+    - name: Remove created PVC
+      k8s:
+       state: absent
+       namespace: default
+       name: pvc-demo
+       inline:
+         apiVersion: v1
+         kind: PersistentVolumeClaim
+         metadata:
+           name: pvc-demo
