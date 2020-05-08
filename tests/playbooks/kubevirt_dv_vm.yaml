@@ -19,7 +19,7 @@
         name: fedora-dv-test
         labels:
           special: test-e2e-key
-        memory: 64Mi
+        memory: 2Gi
         cpu_cores: 1
         datavolumes:
           - name: fedora-dv-test
@@ -27,6 +27,8 @@
               http:
                 url: "https://dl.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.qcow2"
             pvc:
+              storageClassName: "{{ storage_provisioner }}"
+              volumeMode: "{{ volume_mode }}"
               accessModes:
                 - ReadWriteOnce
               storage: 5Gi
